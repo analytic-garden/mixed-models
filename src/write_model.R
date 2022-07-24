@@ -1,6 +1,6 @@
 #' write_model - write a model as a dataframe in a CSV file
 #'
-#' @param m - a model name. The name of an object containing the output of lm() or lmer()
+#' @param m - a linear model
 #' @param model_file - where to save CSV file
 #' @param is_intercept_only - is this only an intecept model? Defaul = FALSE
 #'
@@ -43,7 +43,6 @@ write_model <- function(m,
     }
   }
   
-  # m <- force(model_name)
   df_m <- tidy(m)
   df_m$Significance <- unlist(map(df_m$p.value, get_stars))
   
